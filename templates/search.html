@@ -1,0 +1,24 @@
+{% load i18n %}
+<form class="search-area form-group">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11 clearfix">
+                <label><i class="fa fa-search"></i><span>{% trans "I am search ..." %}</span>
+                </label>
+                <div class="search-area-division search-area-division-input">
+                    <input class="form-control" type="text" placeholder="{% trans "TV 32''" %}" />
+                </div>
+            </div>
+            <!-- <div class="col-md-3 clearfix">
+                <label><i class="fa fa-map-marker"></i><span>In</span>
+                </label>
+                <div class="search-area-division search-area-division-location">
+                    <input class="form-control" type="text" placeholder="Boston" />
+                </div>
+            </div> -->
+            <div class="col-md-1">
+                <button class="btn btn-block btn-white search-btn" type="submit">{% trans "Search" %}</button>
+            </div>
+        </div>
+    </div>
+</form>

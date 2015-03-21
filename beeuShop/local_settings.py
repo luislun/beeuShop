@@ -26,7 +26,7 @@ DATABASES = {
 }
 
 STATICFILES_DIRS = (
-    '/home/luis/shop/statics/',
+    '/home/luis/Documentos/github/beeuShop/statics',
     #'C:\CantoApps\canto\canto\static',
 )
 
@@ -35,5 +35,5 @@ TEMPLATE_DIRS = [
 ]
 
 LOCALE_PATHS = (
-    '/home/luis/Documentos/github/shop/locale',
+    '/home/luis/Documentos/github/beeuShop/locale',
 )

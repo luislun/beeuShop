@@ -1,5 +1,5 @@
 """
-Django settings for shop project.
+Django settings for beeuShop project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -24,6 +24,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'brands',
+    'categories',
+    'comments',
+    'companies',
+    'products',
+    'photos',
+    'features',
     # 'authShop',
     # 'catBrands',
     # 'catCompanies',
@@ -45,9 +52,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
 )
 
-ROOT_URLCONF = 'shop.urls'
+ROOT_URLCONF = 'beeuShop.urls'
 
-WSGI_APPLICATION = 'shop.wsgi.application'
+WSGI_APPLICATION = 'beeuShop.wsgi.application'
 
 
 # Database
@@ -55,7 +62,7 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'beeuShop',
+        'NAME': 'beeushop',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',
         'PASSWORD': '0158',
@@ -83,7 +90,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/statics/'
 
 # AUTHENTICATION_BACKENDS = (
 #     'authShop.backends.EmailBackend',
@@ -96,5 +103,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.static',
     'django.contrib.messages.context_processors.messages',
-    # 'shop.context_processor.categories',
+    'beeuShop.context_processor.categories',
 )

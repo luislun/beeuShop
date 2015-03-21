@@ -1,0 +1,279 @@
+{% extends 'main.html' %}
+
+{% load humanize %}
+{% load i18n %}
+
+{% block header %}
+    {% include 'header-logout.html' %}
+{% endblock header %}
+
+{% block content %}
+    <div class="container">
+		<div class="row">
+		    <div class="col-md-10 col-md-offset-1">
+		        <div id="review-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
+		            <h3>{% trans "Add a Review" %}</h3>
+		            <form>
+		                <div class="form-group">
+		                    <label>Name</label>
+		                    <input type="text" placeholder="e.g. John Doe" class="form-control" />
+		                </div>
+		                <div class="form-group">
+		                    <label>E-mail</label>
+		                    <input type="text" placeholder="e.g. jogndoe@gmail.com" class="form-control" />
+		                </div>
+		                <div class="form-group">
+		                    <label>Review</label>
+		                    <textarea class="form-control"></textarea>
+		                </div>
+		                <div class="form-group">
+		                    <label>Rating</label>
+		                    <ul class="icon-list icon-list-inline star-rating" id="star-rating">
+		                        <li><i class="fa fa-star"></i>
+		                        </li>
+		                        <li><i class="fa fa-star"></i>
+		                        </li>
+		                        <li><i class="fa fa-star"></i>
+		                        </li>
+		                        <li><i class="fa fa-star"></i>
+		                        </li>
+		                        <li><i class="fa fa-star"></i>
+		                        </li>
+		                    </ul>
+		                </div>
+		                <input type="submit" class="btn btn-primary" value="Submit" />
+		            </form>
+		        </div>
+		        <div class="row">
+		            <div class="col-md-7">
+		                <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
+		                	{% for photo in product.photos.all %}
+	                    		<img src="/{{ photo }}" alt="Image Alternative text" title="Gamer Chick" />
+	                    	{% endfor %}
+		                </div>
+		            </div>
+		            <div class="col-md-5">
+		                <div class="product-info box">
+		                	<input id="rate-product" class="rating" data-glyphicon="false" data-rating-class="rating-fa" data-show-clear="false" data-show-caption="true" data-size="xs" value="3.4" data-readonly="false" data-step="1" data-default-caption="{rating} puntos">
+
+		                    <small><a href="#" class="text-muted">based on 8 reviews</a></small>
+		                    <h3>{{ product.product }} <small><a href="{{ product.brand.web }}" target="_blank">{{ product.brand }}</a></small></h3>
+		                    <p class="product-info-price">${{ product.price|floatformat:2|intcomma }}</p>
+		                    <p class="text-smaller text-muted">{{ product.description }}</p>
+		                    <ul class="icon-list list-space product-info-list">
+		                    	{% for feature in product.features.all %}
+		                    		<li><i class="fa fa-check"></i>{{ feature }}</li>	
+		                    	{% endfor %}
+		                    </ul>
+		                    <ul class="list-inline">
+		                        <li><a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> {% trans "Add to cart" %}</a>
+		                        </li>
+		                        <li><a href="#" class="btn"><i class="fa fa-star"></i> {% trans "To Wishlist" %}</a>
+		                        </li>
+		                    </ul>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="gap"></div>
+		        <div class="tabbable">
+		            <ul class="nav nav-tabs" id="myTab">
+		                <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-pencil"></i>{% trans "Desciption" %}</a>
+		                </li>
+		                <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-info"></i>{% trans "Additional Information" %}</a>
+		                </li>
+		                <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-truck"></i>{% trans "Shipping & Payment" %}</a>
+		                </li>
+		                <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-comments"></i>{% trans "Reviews" %}</a>
+		                </li>
+		            </ul>
+		            <div class="tab-content">
+		                <div class="tab-pane fade in active" id="tab-1">
+		                    <p>{{ product.long_description }}</p>
+		                </div>
+		                <div class="tab-pane fade" id="tab-2">
+		                    <table class="table table-striped mb0">
+		                        <tbody>
+		                            <tr>
+		                                <td>Weight</td>
+		                                <td>1.5kg</td>
+		                            </tr>
+		                            <tr>
+		                                <td>Dimentions</td>
+		                                <td>10 x 20 x 30 cm</td>
+		                            </tr>
+		                            <tr>
+		                                <td>Composition</td>
+		                                <td>100% Cotton</td>
+		                            </tr>
+		                            <tr>
+		                                <td>Size & Fit</td>
+		                                <td>This style comes in a regular fit which fits true to size</td>
+		                            </tr>
+		                            <tr>
+		                                <td>Other Info</td>
+		                                <td>Machine wash according to instructions on care label</td>
+		                            </tr>
+		                            <tr>
+		                                <td>Size</td>
+		                                <td>Small, Medium, Large</td>
+		                            </tr>
+		                            <tr>
+		                                <td>Color</td>
+		                                <td>Brown</td>
+		                            </tr>
+		                        </tbody>
+		                    </table>
+		                </div>
+		                <div class="tab-pane fade" id="tab-3">
+		                    <p>Cursus libero commodo ipsum conubia curabitur augue dui cras nisl netus mus morbi et proin penatibus dolor consequat condimentum enim laoreet nullam sapien montes condimentum quis in enim mollis vivamus</p>
+		                    <p>A nisi netus erat dolor fames nibh at condimentum netus interdum iaculis euismod cursus hendrerit parturient suscipit erat felis taciti inceptos nec nisi luctus ac habitasse aptent lobortis etiam facilisis</p>
+		                </div>
+		                <div class="tab-pane fade" id="tab-4">
+		                    <ul class="comments-list">
+		                    	{% for comment in product.comments.all %}
+		                    		<li>
+			                            <article class="comment">
+			                                <div class="comment-author">
+			                                    <img src="img/50x50.png" alt="Image Alternative text" title="Gamer Chick" />
+			                                </div>
+			                                <div class="comment-inner">
+			                                    <ul class="icon-group icon-list-rating comment-review-rate" title="5/5 rating">
+			                                        <li><i class="fa fa-star"></i>
+			                                        </li>
+			                                        <li><i class="fa fa-star"></i>
+			                                        </li>
+			                                        <li><i class="fa fa-star"></i>
+			                                        </li>
+			                                        <li><i class="fa fa-star"></i>
+			                                        </li>
+			                                        <li><i class="fa fa-star"></i>
+			                                        </li>
+			                                    </ul><span class="comment-author-name">{{ comment.user.first_name }} {{ comment.user.last_name }}</span>
+			                                    <p class="comment-content">{{ comment }}</p>
+			                                </div>
+			                            </article>
+			                        </li>
+		                    	{% endfor %}
+		                    </ul><a class="popup-text btn btn-primary" href="#review-dialog" data-effect="mfp-zoom-out"><i class="fa fa-pencil"></i> {% trans "Add a Review" %}</a>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="gap"></div>
+		        <h3>{% trans "Related Porducts" %}</h3>
+		        <div class="gap gap-mini"></div>
+		        <div class="row row-wrap">
+		            <div class="col-md-4">
+		                <div class="product-thumb">
+		                    <header class="product-header">
+		                        <img src="img/800x600.png" alt="Image Alternative text" title="Ana 29" />
+		                    </header>
+		                    <div class="product-inner">
+		                        <ul class="icon-group icon-list-rating" title="3.4/5 rating">
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star-half-empty"></i>
+		                            </li>
+		                            <li><i class="fa fa-star-o"></i>
+		                            </li>
+		                        </ul>
+		                        <h5 class="product-title">Hot Summer Collection</h5>
+		                        <p class="product-desciption">Gravida risus eleifend curae commodo feugiat iaculis elit</p>
+		                        <div class="product-meta">
+		                            <ul class="product-price-list">
+		                                <li><span class="product-price">$218</span>
+		                                </li>
+		                            </ul>
+		                            <ul class="product-actions-list">
+		                                <li><a class="btn btn-sm" href="#"><i class="fa fa-shopping-cart"></i> To Cart</a>
+		                                </li>
+		                                <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
+		                                </li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="col-md-4">
+		                <div class="product-thumb">
+		                    <header class="product-header">
+		                        <img src="img/800x600.png" alt="Image Alternative text" title="My Ice Cream and Your Ice Cream Spoons" />
+		                    </header>
+		                    <div class="product-inner">
+		                        <ul class="icon-group icon-list-rating" title="4/5 rating">
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star-o"></i>
+		                            </li>
+		                        </ul>
+		                        <h5 class="product-title">Lovely Ice Cream Spoons</h5>
+		                        <p class="product-desciption">Gravida risus eleifend curae commodo feugiat iaculis elit</p>
+		                        <div class="product-meta">
+		                            <ul class="product-price-list">
+		                                <li><span class="product-price">$226</span>
+		                                </li>
+		                            </ul>
+		                            <ul class="product-actions-list">
+		                                <li><a class="btn btn-sm" href="#"><i class="fa fa-shopping-cart"></i> To Cart</a>
+		                                </li>
+		                                <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
+		                                </li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="col-md-4">
+		                <div class="product-thumb">
+		                    <header class="product-header">
+		                        <img src="img/800x600.png" alt="Image Alternative text" title="a turn" />
+		                    </header>
+		                    <div class="product-inner">
+		                        <ul class="icon-group icon-list-rating" title="3.2/5 rating">
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star"></i>
+		                            </li>
+		                            <li><i class="fa fa-star-half-empty"></i>
+		                            </li>
+		                            <li><i class="fa fa-star-o"></i>
+		                            </li>
+		                        </ul>
+		                        <h5 class="product-title">Diving with Sharks</h5>
+		                        <p class="product-desciption">Gravida risus eleifend curae commodo feugiat iaculis elit</p>
+		                        <div class="product-meta">
+		                            <ul class="product-price-list">
+		                                <li><span class="product-price">$127</span>
+		                                </li>
+		                            </ul>
+		                            <ul class="product-actions-list">
+		                                <li><a class="btn btn-sm" href="#"><i class="fa fa-shopping-cart"></i> To Cart</a>
+		                                </li>
+		                                <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
+		                                </li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="gap gap-small"></div>
+		    </div>
+		</div>
+	</div>
+{% endblock content %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock footer %}

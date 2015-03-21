@@ -1,0 +1,96 @@
+{% load i18n %}
+
+{% block login %}
+    {% include 'login.html' %}
+{% endblock login %}
+
+{% block register %}
+    {% include 'register.html' %}
+{% endblock register %}
+
+{% block password_recovery %}
+    {% include 'password-recovery.html' %}
+{% endblock password_recovery %}
+
+<div class="top-main-area text-center">
+    <div class="container">
+        <a href="index.html" class="logo mt5">
+            <img src="{{ STATIC_URL }}img/logos/logo_beeusoft_154x46.png" alt="Tienda en l&iacute;nea Beeusoft" title="Tienda Beeusoft" />
+        </a>
+    </div>
+</div>
+<header class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- MAIN NAVIGATION -->
+                <div class="flexnav-menu-button" id="flexnav-menu-button"></div>
+                <nav>
+                    <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
+                        <li>
+                            <a href="">{% trans 'Home'%}</a>
+                        </li>
+                        <li><a href="category-page-shop.html">{% trans 'Categories' %}</a>
+                            <ul>
+
+                                {% for category in listCategories %}
+                                    <li>
+                                        <a href="#">{{ category }}</a>
+                                        <ul>
+                                            {% for subCategory in category.children.all %}
+                                                <li><a href="#">{{ subCategory }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="active"><a href="product-shop-sidebar.html">{% trans 'Product'%} </a>
+                            
+                        </li>
+                    </ul>
+                </nav>
+                <!-- END MAIN NAVIGATION -->
+            </div>
+            <div class="col-md-6">
+                <!-- LOGIN REGISTER LINKS -->
+                <ul class="login-register">
+                    <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-shopping-cart"></i>{% trans "My Cart" %}</a>
+                        <div class="shopping-cart-box">
+                            <ul class="shopping-cart-items">
+                                <li>
+                                    <a href="product-shop-sidebar.html">
+                                        <img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />
+                                        <h5>New Glass Collection</h5><span class="shopping-cart-item-price">$150</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="product-shop-sidebar.html">
+                                        <img src="img/70x70.png" alt="Image Alternative text" title="Gamer Chick" />
+                                        <h5>Playstation Accessories</h5><span class="shopping-cart-item-price">$170</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="list-inline text-center">
+                                <li><a href="page-cart.html"><i class="fa fa-shopping-cart"></i> {% trans "View Cart" %}</a>
+                                </li>
+                                <li><a href="page-checkout.html"><i class="fa fa-check-square"></i> {% trans "Checkout" %}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>{% trans "Sign in" %}</a>
+                    </li>
+                    <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>{% trans "Sign up" %}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% block search %}
+    {% include 'search.html' %}
+{% endblock search %}
+
+<div class="gap"></div>

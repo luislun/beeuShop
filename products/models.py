@@ -29,3 +29,12 @@ class Product( models.Model ):
 
     def __unicode__( self ):
       return self.product
+
+
+class ProductFeature( models.Model ):
+    product     = models.ForeignKey( Product )
+    feature     = models.ForeignKey( Features )
+    description = models.CharField( max_length = 250 )
+
+    def __unicode__( self ):
+      return  unicode( self.product ) or u''

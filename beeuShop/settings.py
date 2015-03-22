@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     'products',
     'photos',
     'features',
+    'scores',
     # 'authShop',
     # 'catBrands',
     # 'catCompanies',

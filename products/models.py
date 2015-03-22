@@ -7,6 +7,7 @@ from categories.models import Category
 from comments.models   import Comment
 from features.models   import Features
 from photos.models     import Photo
+from scores.models     import Score
 
 class Product( models.Model ):
     product          = models.CharField( max_length = 100 )
@@ -25,6 +26,7 @@ class Product( models.Model ):
     features         = models.ManyToManyField( Features, null = True, blank = True )
     comments         = models.ManyToManyField( Comment, null = True, blank = True )
     photos           = models.ManyToManyField( Photo, null = True, blank = True )
+    scores           = models.ManyToManyField( Score, null = True, blank = True )
     relatedProducts  = models.ManyToManyField( 'self', related_name = 'related_products', null = True, blank = True )
 
     def __unicode__( self ):

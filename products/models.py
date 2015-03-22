@@ -23,8 +23,6 @@ class Product( models.Model ):
     category_level_4 = models.ForeignKey( Category, related_name = 'category_level_4', null = True, blank = True )
     category_level_5 = models.ForeignKey( Category, related_name = 'category_level_5', null = True, blank = True )
 
-    features         = models.ManyToManyField( Features, null = True, blank = True )
-    comments         = models.ManyToManyField( Comment, null = True, blank = True )
     photos           = models.ManyToManyField( Photo, null = True, blank = True )
     scores           = models.ManyToManyField( Score, null = True, blank = True )
     relatedProducts  = models.ManyToManyField( 'self', related_name = 'related_products', null = True, blank = True )

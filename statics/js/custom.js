@@ -350,12 +350,8 @@ $(window).load(function() {
 });
 
 // initialize with defaults
-$("#rate-product").rating({
-    'starCaptions': {
-        1: '1 punto',
-        2: '2 puntos',
-        3: '3 puntos',
-        4: '4 puntos',
-        5: '5 puntos'
-    }
+$(".rating").raty({
+    hints     : ['Muy malo', 'Malo', 'Regular', 'Gueno', 'Excelente'],
+    precision : true,
+    starType  : 'i',
 });

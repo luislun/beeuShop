@@ -54,9 +54,11 @@
 		            </div>
 		            <div class="col-md-5">
 		                <div class="product-info box">
-		                	<input id="rate-product" class="rating" data-glyphicon="false" data-rating-class="rating-fa" data-show-clear="false" data-show-caption="true" data-size="xs" value="3.4" data-readonly="false" data-step="1" data-default-caption="{rating} puntos">
+		                	<small>
+								<div class="rating text-warning" data-cancel="true"></div>
+	                        </small>
 
-		                    <small><a href="#" class="text-muted">based on 8 reviews</a></small>
+		                    <!-- <small><a href="#" class="text-muted">based on 8 reviews</a></small> -->
 		                    <h3>{{ product.product }} <small><a href="{{ product.brand.web }}" target="_blank">{{ product.brand }}</a></small></h3>
 		                    <p class="product-info-price">${{ product.price|floatformat:2|intcomma }}</p>
 		                    <p class="text-smaller text-muted">{{ product.description }}</p>
@@ -83,7 +85,7 @@
 		                </li>
 		                <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-truck"></i>{% trans "Shipping & Payment" %}</a>
 		                </li>
-		                <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-comments"></i>{% trans "Reviews" %}</a>
+		                <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-comments"></i>{% trans "Reviews" %} ({{ product.scores.count }})</a>
 		                </li>
 		            </ul>
 		            <div class="tab-content">
@@ -108,26 +110,19 @@
 		                </div>
 		                <div class="tab-pane fade" id="tab-4">
 		                    <ul class="comments-list">
-		                    	{% for comment in product.comments.all %}
+		                    	{% for score in product.scores.all %}
 		                    		<li>
 			                            <article class="comment">
 			                                <div class="comment-author">
-			                                    <img src="img/50x50.png" alt="Image Alternative text" title="Gamer Chick" />
+			                                    <img src="{{ STATIC_URL }}img/avatar.jpeg" alt="Image Alternative text" title="Gamer Chick" />
 			                                </div>
 			                                <div class="comment-inner">
-			                                    <ul class="icon-group icon-list-rating comment-review-rate" title="5/5 rating">
-			                                        <li><i class="fa fa-star"></i>
-			                                        </li>
-			                                        <li><i class="fa fa-star"></i>
-			                                        </li>
-			                                        <li><i class="fa fa-star"></i>
-			                                        </li>
-			                                        <li><i class="fa fa-star"></i>
-			                                        </li>
-			                                        <li><i class="fa fa-star"></i>
-			                                        </li>
-			                                    </ul><span class="comment-author-name">{{ comment.user.first_name }} {{ comment.user.last_name }}</span>
-			                                    <p class="comment-content">{{ comment }}</p>
+			                                	<small>
+													<div class="rating text-primary" style="font-size: 8px;" data-score="{{ score }}" data-camcel="false" data-readonly="true"></div>
+						                        </small>
+			                                    
+			                                    <span class="comment-author-name">{{ score.user.first_name }} {{ score.user.last_name }}</span>
+		                                    	<p class="comment-content">{{ score.comment }}</p>
 			                                </div>
 			                            </article>
 			                        </li>
@@ -143,7 +138,7 @@
 		            <div class="col-md-4">
 		                <div class="product-thumb">
 		                    <header class="product-header">
-		                        <img src="img/800x600.png" alt="Image Alternative text" title="Ana 29" />
+		                        <img src="{{ STATIC_URL }}img/800x600.png" alt="Image Alternative text" title="Ana 29" />
 		                    </header>
 		                    <div class="product-inner">
 		                        <ul class="icon-group icon-list-rating" title="3.4/5 rating">
@@ -178,7 +173,7 @@
 		            <div class="col-md-4">
 		                <div class="product-thumb">
 		                    <header class="product-header">
-		                        <img src="img/800x600.png" alt="Image Alternative text" title="My Ice Cream and Your Ice Cream Spoons" />
+		                        <img src="{{ STATIC_URL }}img/800x600.png" alt="Image Alternative text" title="My Ice Cream and Your Ice Cream Spoons" />
 		                    </header>
 		                    <div class="product-inner">
 		                        <ul class="icon-group icon-list-rating" title="4/5 rating">
@@ -213,7 +208,7 @@
 		            <div class="col-md-4">
 		                <div class="product-thumb">
 		                    <header class="product-header">
-		                        <img src="img/800x600.png" alt="Image Alternative text" title="a turn" />
+		                        <img src="{{ STATIC_URL }}img/800x600.png" alt="Image Alternative text" title="a turn" />
 		                    </header>
 		                    <div class="product-inner">
 		                        <ul class="icon-group icon-list-rating" title="3.2/5 rating">

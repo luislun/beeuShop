@@ -119,7 +119,7 @@ $('#star-rating > li').each(function() {
     $(this).hover(function() {
         for (var i = 0; i < listItems.length; i++) {
             if (i <= itemIndex) {
-                $(listItems[i]).addClass('hovered');
+                $(listItems[i]).addClass('hovered text-primary');
             } else {
                 break;
             }

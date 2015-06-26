@@ -1,22 +1,51 @@
 {% load i18n %}
 
 {% block login %}
-    {% include 'login.html' %}
+    {% include 'components/login.html' %}
 {% endblock login %}
 
 {% block register %}
-    {% include 'register.html' %}
+    {% include 'components/register.html' %}
 {% endblock register %}
 
 {% block password_recovery %}
-    {% include 'password-recovery.html' %}
+    {% include 'components/password-recovery.html' %}
 {% endblock password_recovery %}
-
-<div class="top-main-area text-center">
-    <div class="container">
-        <a href="index.html" class="logo mt5">
-            <img src="{{ STATIC_URL }}img/logos/logo_beeusoft_154x46.png" alt="Tienda en l&iacute;nea Beeusoft" title="Tienda Beeusoft" />
-        </a>
+<div class="text-center">
+    <div class="top-main-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="index.html" class="logo mt5">
+                        <img src="{{ STATIC_URL }}img/logos/logo_beeusoft_154x46.png" alt="Tienda en l&iacute;nea Beeusoft" title="Tienda Beeusoft" />
+                    </a>
+                </div>
+                <div class="col-md-6 col-md-offset-4">
+                    <div class="pull-right col-md-12">
+                        <ul class="header-features">
+                            <li class="col-md-4"><i class="fa fa-phone"></i>
+                                <div class="header-feature-caption">
+                                    <h5 class="header-feature-title">(722) 245-64-38</h5>
+                                    <p class="header-feature-sub-title">Soporte 24/7</p>
+                                </div>
+                            </li>
+                            <li class="col-md-4"><i class="fa fa-truck"></i>
+                                <div class="header-feature-caption">
+                                    <h5 class="header-feature-title">Env&iacute;os gratis</h5>
+                                    <p class="header-feature-sub-title">Mayores a $1000</p>
+                                </div>
+                            </li>
+                            <li class="col-md-4"><i class="fa fa-asterisk"></i>
+                                <div class="header-feature-caption">
+                                    <h5 class="header-feature-title">Descuento</h5>
+                                    <p class="header-feature-sub-title">Cupones</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <header class="main">
@@ -90,7 +119,7 @@
 </header>
 
 {% block search %}
-    {% include 'search.html' %}
+    {% include 'components/search.html' %}
 {% endblock search %}
 
 <div class="gap"></div>

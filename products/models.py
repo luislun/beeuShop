@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 
 from brands.models     import Brand
-from categories.models import Category 
+from categories.models import Category
 from comments.models   import Comment
 from features.models   import Features
 from photos.models     import Photo

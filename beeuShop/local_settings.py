@@ -31,7 +31,7 @@ STATICFILES_DIRS = (
 )
 
 TEMPLATE_DIRS = [
-    'templates',
+    'templates/couponia',
 ]
 
 LOCALE_PATHS = (
